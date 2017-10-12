@@ -6,11 +6,11 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/cinema</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-      <mapping class="com.ddsociety.projet_cinema.Entity.Acteur"/>
-      <mapping class="com.ddsociety.projet_cinema.Entity.Categorie"/>
-      <mapping class="com.ddsociety.projet_cinema.Entity.Film"/>
-      <mapping class="com.ddsociety.projet_cinema.Entity.Personnage"/>
-      <mapping class="com.ddsociety.projet_cinema.Entity.Realisateur"/>
+      <mapping class="com.ddsociety.projet_cinema.entities.Acteur"/>
+      <mapping class="com.ddsociety.projet_cinema.entities.Categorie"/>
+      <mapping class="com.ddsociety.projet_cinema.entities.Film"/>
+      <mapping class="com.ddsociety.projet_cinema.entities.Personnage"/>
+      <mapping class="com.ddsociety.projet_cinema.entities.Realisateur"/>
       <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

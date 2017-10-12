@@ -1,20 +1,18 @@
-package com.ddsociety.projet_cinema.Entity;
+package com.ddsociety.projet_cinema.entities;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by kifkif on 12/10/2017.
  */
-@Entity
-@IdClass(PersonnagePK.class)
-public class Personnage {
+public class PersonnagePK implements Serializable {
     private Integer noFilm;
     private Integer noAct;
-    private String nomPers;
-    private Acteur acteurByNoAct;
 
-    @Id
     @Column(name = "NoFilm")
+    @Id
     public Integer getNoFilm() {
         return noFilm;
     }
@@ -23,8 +21,8 @@ public class Personnage {
         this.noFilm = noFilm;
     }
 
-    @Id
     @Column(name = "NoAct")
+    @Id
     public Integer getNoAct() {
         return noAct;
     }
@@ -33,26 +31,15 @@ public class Personnage {
         this.noAct = noAct;
     }
 
-    @Basic
-    @Column(name = "NomPers")
-    public String getNomPers() {
-        return nomPers;
-    }
-
-    public void setNomPers(String nomPers) {
-        this.nomPers = nomPers;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Personnage that = (Personnage) o;
+        PersonnagePK that = (PersonnagePK) o;
 
         if (noFilm != null ? !noFilm.equals(that.noFilm) : that.noFilm != null) return false;
         if (noAct != null ? !noAct.equals(that.noAct) : that.noAct != null) return false;
-        if (nomPers != null ? !nomPers.equals(that.nomPers) : that.nomPers != null) return false;
 
         return true;
     }
@@ -61,17 +48,6 @@ public class Personnage {
     public int hashCode() {
         int result = noFilm != null ? noFilm.hashCode() : 0;
         result = 31 * result + (noAct != null ? noAct.hashCode() : 0);
-        result = 31 * result + (nomPers != null ? nomPers.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NoAct", referencedColumnName = "NoAct", nullable = false)
-    public Acteur getActeurByNoAct() {
-        return acteurByNoAct;
-    }
-
-    public void setActeurByNoAct(Acteur acteurByNoAct) {
-        this.acteurByNoAct = acteurByNoAct;
     }
 }

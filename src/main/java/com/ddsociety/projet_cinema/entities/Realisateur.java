@@ -1,4 +1,4 @@
-package com.ddsociety.projet_cinema.Entity;
+package com.ddsociety.projet_cinema.entities;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
