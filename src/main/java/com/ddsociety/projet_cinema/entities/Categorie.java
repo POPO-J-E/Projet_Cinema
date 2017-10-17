@@ -14,7 +14,7 @@ public class Categorie {
     private String libelleCat;
 
     @Id
-    @Column(name = "CodeCat")
+    @Column(name = "code_cat")
     public String getCodeCat() {
         return codeCat;
     }
@@ -24,7 +24,7 @@ public class Categorie {
     }
 
     @Basic
-    @Column(name = "LibelleCat")
+    @Column(name = "libelle_cat")
     public String getLibelleCat() {
         return libelleCat;
     }

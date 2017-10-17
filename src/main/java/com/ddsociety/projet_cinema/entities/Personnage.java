@@ -6,41 +6,52 @@ import javax.persistence.*;
  * Created by kifkif on 12/10/2017.
  */
 @Entity
-@IdClass(PersonnagePK.class)
 public class Personnage {
-    private Integer noFilm;
-    private Integer noAct;
+    private Integer noPer;
     private String nomPers;
-    private Acteur acteurByNoAct;
+
+    private Acteur acteur;
+    private Film film;
 
     @Id
-    @Column(name = "NoFilm")
-    public Integer getNoFilm() {
-        return noFilm;
+    @Column(name = "no_per")
+    public Integer getNoPer() {
+        return noPer;
     }
 
-    public void setNoFilm(Integer noFilm) {
-        this.noFilm = noFilm;
-    }
-
-    @Id
-    @Column(name = "NoAct")
-    public Integer getNoAct() {
-        return noAct;
-    }
-
-    public void setNoAct(Integer noAct) {
-        this.noAct = noAct;
+    public void setNoPer(Integer noPer) {
+        this.noPer = noPer;
     }
 
     @Basic
-    @Column(name = "NomPers")
+    @Column(name = "nom_pers")
     public String getNomPers() {
         return nomPers;
     }
 
     public void setNomPers(String nomPers) {
         this.nomPers = nomPers;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "no_act")
+    public Acteur getActeur() {
+        return acteur;
+    }
+
+    public void setActeur(Acteur acteur) {
+        this.acteur = acteur;
+    }
+
+
+    @ManyToOne
+    @JoinColumn(name = "no_film")
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
     }
 
     @Override
@@ -50,8 +61,7 @@ public class Personnage {
 
         Personnage that = (Personnage) o;
 
-        if (noFilm != null ? !noFilm.equals(that.noFilm) : that.noFilm != null) return false;
-        if (noAct != null ? !noAct.equals(that.noAct) : that.noAct != null) return false;
+        if (noPer != null ? !noPer.equals(that.noPer) : that.noPer != null) return false;
         if (nomPers != null ? !nomPers.equals(that.nomPers) : that.nomPers != null) return false;
 
         return true;
@@ -59,19 +69,8 @@ public class Personnage {
 
     @Override
     public int hashCode() {
-        int result = noFilm != null ? noFilm.hashCode() : 0;
-        result = 31 * result + (noAct != null ? noAct.hashCode() : 0);
+        int result = noPer != null ? noPer.hashCode() : 0;
         result = 31 * result + (nomPers != null ? nomPers.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NoAct", referencedColumnName = "NoAct", nullable = false)
-    public Acteur getActeurByNoAct() {
-        return acteurByNoAct;
-    }
-
-    public void setActeurByNoAct(Acteur acteurByNoAct) {
-        this.acteurByNoAct = acteurByNoAct;
     }
 }

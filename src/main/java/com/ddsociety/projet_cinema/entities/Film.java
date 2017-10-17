@@ -9,16 +9,17 @@ import java.sql.Date;
 @Entity
 public class Film {
     private Integer noFilm;
-    private String titre;
-    private Integer duree;
-    private Date dateSortie;
     private Integer budget;
+    private Date dateSortie;
+    private Integer duree;
     private Integer montantRecette;
-    private Realisateur realisateurByNoRea;
-    private Categorie categorieByCodeCat;
+    private String titre;
+
+    private Categorie categorie;
+    private Realisateur realisateur;
 
     @Id
-    @Column(name = "NoFilm")
+    @Column(name = "no_film")
     public Integer getNoFilm() {
         return noFilm;
     }
@@ -28,37 +29,7 @@ public class Film {
     }
 
     @Basic
-    @Column(name = "Titre")
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    @Basic
-    @Column(name = "Duree")
-    public Integer getDuree() {
-        return duree;
-    }
-
-    public void setDuree(Integer duree) {
-        this.duree = duree;
-    }
-
-    @Basic
-    @Column(name = "DateSortie")
-    public Date getDateSortie() {
-        return dateSortie;
-    }
-
-    public void setDateSortie(Date dateSortie) {
-        this.dateSortie = dateSortie;
-    }
-
-    @Basic
-    @Column(name = "Budget")
+    @Column(name = "budget")
     public Integer getBudget() {
         return budget;
     }
@@ -68,13 +39,63 @@ public class Film {
     }
 
     @Basic
-    @Column(name = "MontantRecette")
+    @Column(name = "date_sortie")
+    public Date getDateSortie() {
+        return dateSortie;
+    }
+
+    public void setDateSortie(Date dateSortie) {
+        this.dateSortie = dateSortie;
+    }
+
+    @Basic
+    @Column(name = "duree")
+    public Integer getDuree() {
+        return duree;
+    }
+
+    public void setDuree(Integer duree) {
+        this.duree = duree;
+    }
+
+    @Basic
+    @Column(name = "montant_recette")
     public Integer getMontantRecette() {
         return montantRecette;
     }
 
     public void setMontantRecette(Integer montantRecette) {
         this.montantRecette = montantRecette;
+    }
+
+    @Basic
+    @Column(name = "titre")
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="code_cat")
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="no_rea")
+    public Realisateur getRealisateur() {
+        return realisateur;
+    }
+
+    public void setRealisateur(Realisateur realisateur) {
+        this.realisateur = realisateur;
     }
 
     @Override
@@ -85,12 +106,12 @@ public class Film {
         Film film = (Film) o;
 
         if (noFilm != null ? !noFilm.equals(film.noFilm) : film.noFilm != null) return false;
-        if (titre != null ? !titre.equals(film.titre) : film.titre != null) return false;
-        if (duree != null ? !duree.equals(film.duree) : film.duree != null) return false;
-        if (dateSortie != null ? !dateSortie.equals(film.dateSortie) : film.dateSortie != null) return false;
         if (budget != null ? !budget.equals(film.budget) : film.budget != null) return false;
+        if (dateSortie != null ? !dateSortie.equals(film.dateSortie) : film.dateSortie != null) return false;
+        if (duree != null ? !duree.equals(film.duree) : film.duree != null) return false;
         if (montantRecette != null ? !montantRecette.equals(film.montantRecette) : film.montantRecette != null)
             return false;
+        if (titre != null ? !titre.equals(film.titre) : film.titre != null) return false;
 
         return true;
     }
@@ -98,31 +119,11 @@ public class Film {
     @Override
     public int hashCode() {
         int result = noFilm != null ? noFilm.hashCode() : 0;
-        result = 31 * result + (titre != null ? titre.hashCode() : 0);
-        result = 31 * result + (duree != null ? duree.hashCode() : 0);
-        result = 31 * result + (dateSortie != null ? dateSortie.hashCode() : 0);
         result = 31 * result + (budget != null ? budget.hashCode() : 0);
+        result = 31 * result + (dateSortie != null ? dateSortie.hashCode() : 0);
+        result = 31 * result + (duree != null ? duree.hashCode() : 0);
         result = 31 * result + (montantRecette != null ? montantRecette.hashCode() : 0);
+        result = 31 * result + (titre != null ? titre.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NoRea", referencedColumnName = "NoRea", nullable = false)
-    public Realisateur getRealisateurByNoRea() {
-        return realisateurByNoRea;
-    }
-
-    public void setRealisateurByNoRea(Realisateur realisateurByNoRea) {
-        this.realisateurByNoRea = realisateurByNoRea;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "CodeCat", referencedColumnName = "CodeCat", nullable = false)
-    public Categorie getCategorieByCodeCat() {
-        return categorieByCodeCat;
-    }
-
-    public void setCategorieByCodeCat(Categorie categorieByCodeCat) {
-        this.categorieByCodeCat = categorieByCodeCat;
     }
 }

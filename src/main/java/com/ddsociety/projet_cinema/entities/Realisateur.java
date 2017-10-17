@@ -15,7 +15,7 @@ public class Realisateur {
     private String prenRea;
 
     @Id
-    @Column(name = "NoRea")
+    @Column(name = "no_rea")
     public Integer getNoRea() {
         return noRea;
     }
@@ -25,7 +25,7 @@ public class Realisateur {
     }
 
     @Basic
-    @Column(name = "NomRea")
+    @Column(name = "nom_rea")
     public String getNomRea() {
         return nomRea;
     }
@@ -35,7 +35,7 @@ public class Realisateur {
     }
 
     @Basic
-    @Column(name = "PrenRea")
+    @Column(name = "pren_rea")
     public String getPrenRea() {
         return prenRea;
     }

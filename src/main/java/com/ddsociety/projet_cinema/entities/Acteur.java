@@ -12,13 +12,13 @@ import java.sql.Date;
 @Entity
 public class Acteur {
     private Integer noAct;
+    private Date dateDeces;
+    private Date dateNaiss;
     private String nomAct;
     private String prenAct;
-    private Date dateNaiss;
-    private Date dateDeces;
 
     @Id
-    @Column(name = "NoAct")
+    @Column(name = "no_act")
     public Integer getNoAct() {
         return noAct;
     }
@@ -28,27 +28,17 @@ public class Acteur {
     }
 
     @Basic
-    @Column(name = "NomAct")
-    public String getNomAct() {
-        return nomAct;
+    @Column(name = "date_deces")
+    public Date getDateDeces() {
+        return dateDeces;
     }
 
-    public void setNomAct(String nomAct) {
-        this.nomAct = nomAct;
-    }
-
-    @Basic
-    @Column(name = "PrenAct")
-    public String getPrenAct() {
-        return prenAct;
-    }
-
-    public void setPrenAct(String prenAct) {
-        this.prenAct = prenAct;
+    public void setDateDeces(Date dateDeces) {
+        this.dateDeces = dateDeces;
     }
 
     @Basic
-    @Column(name = "DateNaiss")
+    @Column(name = "date_naiss")
     public Date getDateNaiss() {
         return dateNaiss;
     }
@@ -58,13 +48,23 @@ public class Acteur {
     }
 
     @Basic
-    @Column(name = "DateDeces")
-    public Date getDateDeces() {
-        return dateDeces;
+    @Column(name = "nom_act")
+    public String getNomAct() {
+        return nomAct;
     }
 
-    public void setDateDeces(Date dateDeces) {
-        this.dateDeces = dateDeces;
+    public void setNomAct(String nomAct) {
+        this.nomAct = nomAct;
+    }
+
+    @Basic
+    @Column(name = "pren_act")
+    public String getPrenAct() {
+        return prenAct;
+    }
+
+    public void setPrenAct(String prenAct) {
+        this.prenAct = prenAct;
     }
 
     @Override
@@ -75,10 +75,10 @@ public class Acteur {
         Acteur acteur = (Acteur) o;
 
         if (noAct != null ? !noAct.equals(acteur.noAct) : acteur.noAct != null) return false;
+        if (dateDeces != null ? !dateDeces.equals(acteur.dateDeces) : acteur.dateDeces != null) return false;
+        if (dateNaiss != null ? !dateNaiss.equals(acteur.dateNaiss) : acteur.dateNaiss != null) return false;
         if (nomAct != null ? !nomAct.equals(acteur.nomAct) : acteur.nomAct != null) return false;
         if (prenAct != null ? !prenAct.equals(acteur.prenAct) : acteur.prenAct != null) return false;
-        if (dateNaiss != null ? !dateNaiss.equals(acteur.dateNaiss) : acteur.dateNaiss != null) return false;
-        if (dateDeces != null ? !dateDeces.equals(acteur.dateDeces) : acteur.dateDeces != null) return false;
 
         return true;
     }
@@ -86,10 +86,10 @@ public class Acteur {
     @Override
     public int hashCode() {
         int result = noAct != null ? noAct.hashCode() : 0;
+        result = 31 * result + (dateDeces != null ? dateDeces.hashCode() : 0);
+        result = 31 * result + (dateNaiss != null ? dateNaiss.hashCode() : 0);
         result = 31 * result + (nomAct != null ? nomAct.hashCode() : 0);
         result = 31 * result + (prenAct != null ? prenAct.hashCode() : 0);
-        result = 31 * result + (dateNaiss != null ? dateNaiss.hashCode() : 0);
-        result = 31 * result + (dateDeces != null ? dateDeces.hashCode() : 0);
         return result;
     }
 }
