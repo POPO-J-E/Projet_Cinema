@@ -2,6 +2,7 @@ package com.ddsociety.projet_cinema.entities;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Created by kifkif on 12/10/2017.
@@ -17,6 +18,7 @@ public class Film {
 
     private Categorie categorie;
     private Realisateur realisateur;
+    private List<Personnage> personnages;
 
     @Id
     @Column(name = "no_film")
@@ -96,6 +98,15 @@ public class Film {
 
     public void setRealisateur(Realisateur realisateur) {
         this.realisateur = realisateur;
+    }
+
+    @OneToMany(mappedBy = "film")
+    public List<Personnage> getPersonnages() {
+        return personnages;
+    }
+
+    public void setPersonnages(List<Personnage> personnages) {
+        this.personnages = personnages;
     }
 
     @Override
