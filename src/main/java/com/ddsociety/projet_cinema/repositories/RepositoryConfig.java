@@ -17,5 +17,11 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(Film.class);
         config.exposeIdsFor(Personnage.class);
         config.exposeIdsFor(Realisateur.class);
+
+        config.getCorsRegistry()
+                .addMapping("/**") //
+                .allowedOrigins("*") //
+                .allowedMethods("OPTIONS", "HEAD", "GET", "PUT", "POST", "DELETE", "PATCH") //
+                .allowedHeaders("*");
     }
 }
