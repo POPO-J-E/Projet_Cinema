@@ -14,4 +14,6 @@ public interface ListFilmProjection {
     Date getDateSortie();
     Integer getDuree();
     String getTitre();
+    String getSynopsis();
+    String getImg();
 }

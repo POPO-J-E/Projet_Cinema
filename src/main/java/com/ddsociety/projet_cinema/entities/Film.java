@@ -16,6 +16,9 @@ public class Film {
     private Integer montantRecette;
     private String titre;
 
+    private String synopsis;
+    private String img;
+
     private Categorie categorie;
     private Realisateur realisateur;
     private List<Personnage> personnages;
@@ -78,6 +81,28 @@ public class Film {
 
     public void setTitre(String titre) {
         this.titre = titre;
+    }
+
+
+    @Basic
+    @Column(name = "synopsis")
+    public String getSynopsis() {
+        return synopsis;
+    }
+
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
+    }
+
+
+    @Basic
+    @Column(name = "img")
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @ManyToOne

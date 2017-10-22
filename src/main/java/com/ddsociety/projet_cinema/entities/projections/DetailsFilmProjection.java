@@ -18,6 +18,8 @@ public interface DetailsFilmProjection {
     Date getDateSortie();
     Integer getDuree();
     String getTitre();
+    String getSynopsis();
+    String getImg();
 
     Integer getBudget();
     Integer getMontantRecette();
