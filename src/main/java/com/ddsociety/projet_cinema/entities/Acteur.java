@@ -16,6 +16,7 @@ public class Acteur {
     private Date dateNaiss;
     private String nomAct;
     private String prenAct;
+    private String img;
 
     @Id
     @Column(name = "no_act")
@@ -61,6 +62,16 @@ public class Acteur {
     @Column(name = "pren_act")
     public String getPrenAct() {
         return prenAct;
+    }
+
+    @Basic
+    @Column(name = "img")
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public void setPrenAct(String prenAct) {
