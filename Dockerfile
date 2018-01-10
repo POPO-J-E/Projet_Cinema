@@ -1,8 +1,11 @@
 FROM maven:latest
 WORKDIR /var/www/cinema
+COPY pom.xml .
 RUN pwd
 RUN ls
 RUN mvn dependency:resolve
+COPY . .
+RUN ls
 RUN mvn package -DskipTests
 
 FROM frolvlad/alpine-oraclejdk8:slim
