@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+    db:
+      image: mysql
+      environment:
+            - MYSQL_DATABASE=cinema
+            - MYSQL_USER=userepul
+            - MYSQL_PASSWORD=epul
+            - MYSQL_ROOT_PASSWORD=root
+      volumes:
+            - ./db:/var/lib/mysql
+      ports:
+            - "3306:3306"
+    phpmyadmin:
+     image: phpmyadmin/phpmyadmin
+     environment:
+            PMA_ARBITRARY: 1
+            MYSQL_USER: homestead
+            MYSQL_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: root
+     ports:
+            - "80:80"
+     links:
+            # for mysql container
+            - "db:db"
+
+    spring-boot-cinema:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      volumes:
+        - .:/var/www/cinema
+      ports:
+        - 8080:8080
+      environment:
+        - DATABASE_HOST=db
+        - DATABASE_USER=userepul
+        - DATABASE_PASSWORD=epul
+        - DATABASE_NAME=cinema
+      links:
+        - "db:db"
+volumes:
+    db:
+        driver: "local"
