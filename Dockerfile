@@ -1,5 +1,7 @@
 FROM maven:latest
 WORKDIR /var/www/cinema
+RUN pwd
+RUN ls
 RUN mvn dependency:resolve
 RUN mvn package -DskipTests
 
