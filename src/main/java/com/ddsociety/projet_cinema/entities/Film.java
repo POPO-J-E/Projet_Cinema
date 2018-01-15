@@ -1,5 +1,8 @@
 package com.ddsociety.projet_cinema.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -23,7 +26,10 @@ public class Film {
     private Realisateur realisateur;
     private List<Personnage> personnages;
 
+    private @JsonIgnore @LastModifiedDate Date updTs;
+
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "no_film")
     public Integer getNoFilm() {
         return noFilm;
@@ -132,6 +138,14 @@ public class Film {
 
     public void setPersonnages(List<Personnage> personnages) {
         this.personnages = personnages;
+    }
+
+    public Date getUpdTs() {
+        return updTs;
+    }
+
+    public void setUpdTs(Date updTs) {
+        this.updTs = updTs;
     }
 
     @Override
