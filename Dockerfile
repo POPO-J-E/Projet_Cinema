@@ -3,6 +3,8 @@ WORKDIR /var/www/cinema
 COPY pom.xml .
 RUN mvn dependency:resolve
 COPY . .
+RUN rm ./src/main/resources/application.properties
+RUN cp ./src/main/resources/application.properties.dist ./src/main/resources/application.properties
 RUN mvn package -DskipTests
 
 FROM frolvlad/alpine-oraclejdk8:slim
